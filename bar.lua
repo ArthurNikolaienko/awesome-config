@@ -204,25 +204,20 @@ function createBar(s)
         -- Notice that there is *NO* wibox.wibox prefix, it is a template,
         -- not a widget instance.
         widget_template = {
+            widget = wibox.widget.background,
+            id = "background_role",
             {
-                wibox.widget.base.make_widget(),
-                forced_height = 2,
-                id            = 'background_role',
-                widget        = wibox.container.background,
-            },
-            {
+                margins = 4,
+                widget  = wibox.container.margin,
                 {
                     id     = 'clienticon',
                     widget = awful.widget.clienticon,
                 },
-                margins = 5,
-                widget  = wibox.container.margin
             },
             nil,
             create_callback = function(self, c, index, objects) --luacheck: no unused args
                 self:get_children_by_id('clienticon')[1].client = c
             end,
-            layout = wibox.layout.align.vertical,
         },
     }
     -- Create the wibox
@@ -232,18 +227,8 @@ function createBar(s)
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
-            widget = wibox.layout.fixed.horizontal,
-            -- mylauncher,
-            {
-                widget = wibox.widget.background,
-                shape = powerline_right,
-                bg = "#434c5e",
-                {
-                    widget = wibox.container.margin,
-                    right = 10,
-                    s.mytaglist,
-                }
-            },
+            layout = wibox.layout.fixed.horizontal,
+            s.mytaglist,
             s.mypromptbox,
         },
         s.mytasklist,
