@@ -65,14 +65,6 @@ return {
                 floating = false,
             }
         }
-    },
-
-    {
-        rule = { class = 'kitty' },
-        properties = {
-            floating = true,
-            placement = awful.placement.centered,
-        }
     }
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
