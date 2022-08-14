@@ -88,7 +88,7 @@ local globalkeys = gears.table.join(
               {description = "Start Player", group = "launcher"}),
     awful.key({ modkey,    "Shift"}, "w", function () awful.spawn("chromium") end,
               {description = "Start Chromium", group = "launcher"}),
-    awful.key({ modkey,           }, "d", function () awful.spawn("rofi -show drun") end,
+    awful.key({ modkey,           }, "d", function () awful.spawn.with_shell("env XDG_CONFIG_HOME=~/.config/awesome rofi -show drun") end,
               {description = "Rofi", group = "launcher"}),
     awful.key({                   }, "Print", function () awful.spawn("flameshot gui") end,
               {description = "Flameshot", group = "launcher"}),
