@@ -217,7 +217,7 @@ function createBar(s)
             widget = wibox.widget.background,
             id = "background_role",
             {
-                margins = 4,
+                margins = 3,
                 widget  = wibox.container.margin,
                 {
                     id     = 'clienticon',
@@ -258,6 +258,8 @@ function createBar(s)
                     widget = wibox.container.margin,
                     left = 15,
                     right = 15,
+                    top = 2,
+                    bottom = 2,
                     s.mytasklist,
                 }
             },
