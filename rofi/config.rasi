@@ -1,7 +1,8 @@
 @theme "nord"
 
 configuration {
-  modi: "window,drun,ssh";
+  modi: "window,drun,run,combi";
+  combi-modi: "window,drun,run";
 /*	font: "mono 12";*/
 /*	location: 0;*/
 /*	yoffset: 0;*/

@@ -13,6 +13,8 @@ require("awful.hotkeys_popup.keys")
 local modkey = "Mod4"
 local volume_notification = {id = nil}
 
+local rofiCommand ="env XDG_CONFIG_HOME=~/.config/awesome rofi -show "
+
 function volume(command)
     local dir = gears.filesystem.get_configuration_dir() .. 'scripts/'
 
@@ -88,7 +90,7 @@ local globalkeys = gears.table.join(
               {description = "Start Player", group = "launcher"}),
     awful.key({ modkey,    "Shift"}, "w", function () awful.spawn("chromium") end,
               {description = "Start Chromium", group = "launcher"}),
-    awful.key({ modkey,           }, "d", function () awful.spawn.with_shell("env XDG_CONFIG_HOME=~/.config/awesome rofi -show drun") end,
+    awful.key({ modkey,           }, "d", function () awful.spawn.with_shell(rofiCommand .. "combi") end,
               {description = "Rofi", group = "launcher"}),
     awful.key({                   }, "Print", function () awful.spawn("flameshot gui") end,
               {description = "Flameshot", group = "launcher"}),
@@ -133,9 +135,6 @@ local globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
     
     -- Volume control
     awful.key({}, "XF86AudioRaiseVolume", function() volume('inc') end,
@@ -151,7 +150,14 @@ local globalkeys = gears.table.join(
     awful.key({}, "XF86AudioPause", function() awful.spawn("playerctl -a pause") end,
         {description = "Pause", group = "media"}),
     awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl -a play") end,
-        {description = "Play", group = "media"})
+        {description = "Play", group = "media"}),
+
+    -- Rofi plugins
+    awful.key({modkey}, "p", function() awful.spawn.with_shell(rofiCommand .. "power-menu:~/.config/awesome/rofi/power-menu") end,
+        {description = "Power menu", group = "media"})
+    awful.key({modkey}, "c", function() awful.spawn.with_shell(rofiCommand .. "calc -modi calc") end,
+        {description = "Calculator", group = "media"})
+
 )
 
 local clientkeys = gears.table.join(
