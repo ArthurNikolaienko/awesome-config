@@ -241,7 +241,7 @@ function createBar(s)
             spacing = -20,
             {
                 widget = wibox.widget.background,
-                bg = "#434c5e",
+                bg = "#3b4252",
                 shape = powerline_right,
                 {
                     widget = wibox.container.margin,
@@ -252,7 +252,7 @@ function createBar(s)
             },
             {
                 widget = wibox.widget.background,
-                bg = "#ebcb8b",
+                bg = "#4c566a",
                 shape = powerline_right_no_tail,
                 {
                     widget = wibox.container.margin,

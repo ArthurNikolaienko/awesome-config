@@ -35,6 +35,11 @@ theme.taglist_fg_empty = theme.fg_normal
 theme.taglist_fg_occupied = "#ebcb8b"
 theme.taglist_fg_urgent = theme.fg_urgent
 
+theme.tasklist_bg_urgent = theme.fg_urgent
+theme.tasklist_bg_normal = "#81a1c1"
+theme.tasklist_bg_focus = "#d08770"
+
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
