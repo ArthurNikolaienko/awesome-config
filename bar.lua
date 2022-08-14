@@ -12,6 +12,11 @@ mycalendar.cell_flags = {
 }
 
 mycalendar:attach( mytextclock, "tr" )
+local memCommand = "bash -c \"free --human | awk 'NR == 2 {printf \\\"%s/%s\\\", \\$3, \\$2}'\""
+local myMemWatch = awful.widget.watch(memCommand, 1, function(widget, stdout)
+    widget.markup = '<b>' .. stdout .. '</b>'
+end)
+
 
 -- Menu
 -- Create a launcher widget and a main menu
@@ -110,7 +115,7 @@ function createBar(s)
 
     -- Each screen has its own tag table.
 
-    awful.tag.add(" ", {
+    awful.tag.add(" ", {
         screen = s,
         layout = awful.layout.layouts[1],
         selected = true,
@@ -127,13 +132,18 @@ function createBar(s)
         layout = awful.layout.layouts[1],
     })
 
-    awful.tag.add(" ", {
+    awful.tag.add(" ", {
         screen = s,
         layout = awful.layout.layouts[1],
     })
 
 
     awful.tag.add(" ", {
+        screen = s,
+        layout = awful.layout.layouts[1],
+    })
+    
+    awful.tag.add(" ", {
         screen = s,
         layout = awful.layout.layouts[1],
     })
@@ -250,7 +260,8 @@ function createBar(s)
             spacing = -10,
             {
                 widget = wibox.widget.background,
-                bg = "#4c566a",
+                bg = "#ebcb8b",
+                fg = "#333",
                 shape = powerline_left,
                 {
                     widget = wibox.container.margin,
@@ -270,6 +281,17 @@ function createBar(s)
             --         wibox.widget.systray(),
             --     },
             -- },
+            {
+                widget = wibox.widget.background,
+                bg = "#d08770",
+                shape = powerline_left,
+                {
+                    widget = wibox.container.margin,
+                    left = 15,
+                    right = 15,
+                    myMemWatch,
+                },
+            },
             {
                 widget = wibox.widget.background,
                 bg = "#5e81ac",

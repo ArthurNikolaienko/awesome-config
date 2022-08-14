@@ -139,9 +139,19 @@ local globalkeys = gears.table.join(
     
     -- Volume control
     awful.key({}, "XF86AudioRaiseVolume", function() volume('inc') end,
-        {description = "show the menubar", group = "launcher"}),
+        {description = "Increase volume", group = "media"}),
     awful.key({}, "XF86AudioLowerVolume", function() volume('dec') end,
-        {description = "show the menubar", group = "launcher"})
+        {description = "Decrease volume", group = "media"}),
+
+    -- Player controls
+    awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl -a next") end,
+        {description = "Next track", group = "media"}),
+    awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl -a previous") end,
+        {description = "Previous track", group = "media"}),
+    awful.key({}, "XF86AudioPause", function() awful.spawn("playerctl -a pause") end,
+        {description = "Pause", group = "media"}),
+    awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl -a play") end,
+        {description = "Play", group = "media"})
 )
 
 local clientkeys = gears.table.join(
