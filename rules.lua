@@ -65,6 +65,15 @@ return {
                 floating = false,
             }
         }
+    },
+
+    rule = {
+        name = {"splash"},
+        properties = {
+            floating = true,
+            maximized = false,
+            placement = awful.placement.centered,
+        }
     }
 
     -- Set Firefox to always map on the tag named "2" on screen 1.

@@ -2,7 +2,16 @@
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock('<b>%H:%M</b>')
+local mytextclock = wibox.widget.textclock('<b>%H:%M</b>')
+local mycalendar = awful.widget.calendar_popup.month()
+
+mycalendar.cell_flags = {
+    weekday = {
+        border_width = 1,
+    }
+}
+
+mycalendar:attach( mytextclock, "tr" )
 
 -- Menu
 -- Create a launcher widget and a main menu
@@ -229,9 +238,13 @@ function createBar(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
-            s.mypromptbox,
+            {
+                widget = wibox.container.margin,
+                left = 15,
+                s.mytasklist,
+            }
         },
-        s.mytasklist,
+        nil,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             spacing = -10,
@@ -246,17 +259,17 @@ function createBar(s)
                     mytextclock,
                 },
             },
-            {
-                widget = wibox.widget.background,
-                bg = "#434c5e",
-                shape = powerline_left,
-                {
-                    widget = wibox.container.margin,
-                    left = 15,
-                    right = 15,
-                    wibox.widget.systray(),
-                },
-            },
+            -- {
+            --     widget = wibox.widget.background,
+            --     bg = "#434c5e",
+            --     shape = powerline_left,
+            --     {
+            --         widget = wibox.container.margin,
+            --         left = 20,
+            --         right = 20,
+            --         wibox.widget.systray(),
+            --     },
+            -- },
             {
                 widget = wibox.widget.background,
                 bg = "#5e81ac",

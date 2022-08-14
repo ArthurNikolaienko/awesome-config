@@ -11,6 +11,18 @@ require("awful.hotkeys_popup.keys")
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 local modkey = "Mod4"
+local volume_notification = {id = nil}
+
+function volume(command)
+    local dir = gears.filesystem.get_configuration_dir() .. 'scripts/'
+
+    awful.spawn.easy_async( dir .. 'vol.sh ' .. command, function(stdout) 
+        volume_notification = naughty.notify{
+            text = 'Volume: ' .. stdout,
+            replaces_id = volume_notification.id,
+        }
+    end)
+end
 
 local globalkeys = gears.table.join(
     awful.key({ modkey, "Control" }, "s",      hotkeys_popup.show_help,
@@ -76,6 +88,10 @@ local globalkeys = gears.table.join(
               {description = "Start Player", group = "launcher"}),
     awful.key({ modkey,    "Shift"}, "w", function () awful.spawn("chromium") end,
               {description = "Start Chromium", group = "launcher"}),
+    awful.key({ modkey,           }, "d", function () awful.spawn("rofi -show drun") end,
+              {description = "Rofi", group = "launcher"}),
+    awful.key({                   }, "Print", function () awful.spawn("flameshot gui") end,
+              {description = "Rofi", group = "launcher"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
@@ -106,9 +122,6 @@ local globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey, "Control" }, "x",
               function ()
@@ -122,7 +135,13 @@ local globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    
+    -- Volume control
+    awful.key({}, "XF86AudioRaiseVolume", function() volume('inc') end,
+        {description = "show the menubar", group = "launcher"}),
+    awful.key({}, "XF86AudioLowerVolume", function() volume('dec') end,
+        {description = "show the menubar", group = "launcher"})
 )
 
 local clientkeys = gears.table.join(

@@ -15,9 +15,9 @@ theme.font          = "Hack Nerd Font 9"
 
 theme.bg_normal     = "#2e3440"
 theme.bg_focus      = "#4c566a"
-theme.bg_urgent     = "#ff0000"
+theme.bg_urgent     = theme.bg_focus
 theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
+theme.bg_systray    = "#434c5e"
 
 theme.fg_normal     = "#d8dee9"
 theme.fg_focus      = "#eceff4"
@@ -25,9 +25,9 @@ theme.fg_urgent     = "#bf616a"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(2)
-theme.border_width  = dpi(0)
-theme.border_normal = "#000"
-theme.border_focus  = "#535d6c"
+theme.border_width  = dpi(2)
+theme.border_normal = "#5e81ac"
+theme.border_focus  = "#81a1c1"
 theme.border_marked = "#91231c"
 
 theme.taglist_fg_focus = "#8fbcbb"
@@ -121,6 +121,10 @@ theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
 theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
+
+theme.calendar_style = {
+    border_width  = 0,
+}
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
