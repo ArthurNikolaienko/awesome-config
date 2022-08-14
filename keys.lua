@@ -13,8 +13,6 @@ require("awful.hotkeys_popup.keys")
 local modkey = "Mod4"
 local volume_notification = {id = nil}
 
-local rofiCommand ="env XDG_CONFIG_HOME=~/.config/awesome rofi -show "
-
 function volume(command)
     local dir = gears.filesystem.get_configuration_dir() .. 'scripts/'
 
@@ -90,7 +88,7 @@ local globalkeys = gears.table.join(
               {description = "Start Player", group = "launcher"}),
     awful.key({ modkey,    "Shift"}, "w", function () awful.spawn("chromium") end,
               {description = "Start Chromium", group = "launcher"}),
-    awful.key({ modkey,           }, "d", function () awful.spawn.with_shell(rofiCommand .. "combi") end,
+    awful.key({ modkey,           }, "d", function () awful.spawn.with_shell("rofi -show combi") end,
               {description = "Rofi", group = "launcher"}),
     awful.key({                   }, "Print", function () awful.spawn("flameshot gui") end,
               {description = "Flameshot", group = "launcher"}),
@@ -153,9 +151,9 @@ local globalkeys = gears.table.join(
         {description = "Play", group = "media"}),
 
     -- Rofi plugins
-    awful.key({modkey}, "p", function() awful.spawn.with_shell(rofiCommand .. "power-menu:~/.config/awesome/rofi/power-menu") end,
-        {description = "Power menu", group = "media"})
-    awful.key({modkey}, "c", function() awful.spawn.with_shell(rofiCommand .. "calc -modi calc") end,
+    awful.key({modkey}, "p", function() awful.spawn.with_shell("rofi -show power-menu:~/.config/awesome/rofi/power-menu") end,
+        {description = "Power menu", group = "media"}),
+    awful.key({modkey}, "c", function() awful.spawn.with_shell("rofi -show calc -modi calc") end,
         {description = "Calculator", group = "media"})
 
 )
