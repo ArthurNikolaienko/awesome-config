@@ -12,6 +12,8 @@ mycalendar.cell_flags = {
 }
 
 mycalendar:attach( mytextclock, "tr" )
+
+
 local memCommand = "bash -c \"free --human | awk 'NR == 2 {printf \\\"%s/%s\\\", \\$3, \\$2}'\""
 local myMemWatch = awful.widget.watch(memCommand, 1, function(widget, stdout)
     widget.markup = '<b>' .. stdout .. '</b>'
@@ -108,6 +110,9 @@ end
 function powerline_right(cr, width, height)
     gears.shape.transform(gears.shape.powerline):translate(-10, 0)(cr, width, height, 10)
 end
+function powerline_right_no_tail(cr, width, height)
+    gears.shape.transform(gears.shape.powerline)(cr, width, height, 10)
+end
 
 function createBar(s)
     -- Wallpaper
@@ -179,23 +184,6 @@ function createBar(s)
             },
             id     = 'background_role',
             widget = wibox.container.background,
-            -- Add support for hover colors and an index label
-            -- create_callback = function(self, c3, index, objects) --luacheck: no unused args
-            --     self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
-            --     self:connect_signal('mouse::enter', function()
-            --         if self.bg ~= '#ff0000' then
-            --             self.backup     = self.bg
-            --             self.has_backup = true
-            --         end
-            --         self.bg = '#ff0000'
-            --     end)
-            --     self:connect_signal('mouse::leave', function()
-            --         if self.has_backup then self.bg = self.backup end
-            --     end)
-            -- end,
-            -- update_callback = function(self, c3, index, objects) --luacheck: no unused args
-            --     self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
-            -- end,
         },
     }
 
@@ -204,6 +192,9 @@ function createBar(s)
         screen   = s,
         filter   = awful.widget.tasklist.filter.currenttags,
         buttons  = tasklist_buttons,
+        style = {
+            shape = gears.shape.rounded_bar,
+        },
         layout   = {
             spacing_widget = {
                 {
@@ -247,12 +238,29 @@ function createBar(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            s.mytaglist,
+            spacing = -20,
             {
-                widget = wibox.container.margin,
-                left = 15,
-                s.mytasklist,
-            }
+                widget = wibox.widget.background,
+                bg = "#434c5e",
+                shape = powerline_right,
+                {
+                    widget = wibox.container.margin,
+                    left = 15,
+                    right = 30,
+                    s.mytaglist,
+                }
+            },
+            {
+                widget = wibox.widget.background,
+                bg = "#ebcb8b",
+                shape = powerline_right_no_tail,
+                {
+                    widget = wibox.container.margin,
+                    left = 15,
+                    right = 15,
+                    s.mytasklist,
+                }
+            },
         },
         nil,
         { -- Right widgets

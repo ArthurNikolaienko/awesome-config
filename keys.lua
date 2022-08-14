@@ -78,7 +78,7 @@ local globalkeys = gears.table.join(
               {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey,           }, "w", function () awful.spawn(browser) end,
               {description = "Start browser", group = "launcher"}),
-    awful.key({ modkey,           }, "e", function () awful.spawn("nemo") end,
+    awful.key({ modkey,           }, "e", function () awful.spawn("kitty -e ranger") end,
               {description = "Start file manager", group = "launcher"}),
     awful.key({ modkey,           }, "y", function () awful.spawn("keepassxc") end,
               {description = "Start password manager", group = "launcher"}),
@@ -91,7 +91,7 @@ local globalkeys = gears.table.join(
     awful.key({ modkey,           }, "d", function () awful.spawn("rofi -show drun") end,
               {description = "Rofi", group = "launcher"}),
     awful.key({                   }, "Print", function () awful.spawn("flameshot gui") end,
-              {description = "Rofi", group = "launcher"}),
+              {description = "Flameshot", group = "launcher"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
