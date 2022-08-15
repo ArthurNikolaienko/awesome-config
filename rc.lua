@@ -15,7 +15,7 @@ naughty = require("naughty")
 menubar = require("menubar")
 
 -- Initialize theme
-beautiful.init(gears.filesystem.get_configuration_dir()  .. "theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir()  .. "themes/nord.lua")
 
 require('globals')
 keys = require('keys')

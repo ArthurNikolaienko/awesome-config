@@ -1,6 +1,6 @@
 -- Rules
 -- Rules to apply to new clients (through the "manage" signal).
-return {
+local rules = {
     -- All clients will match this rule.
     { 
         rule = { },
@@ -60,19 +60,29 @@ return {
     {
         rule_any = {
             { class = {'Firefox', 'Chromium'} },
-            properties = {
-                maximized = false,
-                floating = false,
-            }
+        },
+        properties = {
+            maximized = true,
+            fullscreen = true,
+            floating = false,
         }
     },
 
-    rule = {
-        name = {"splash"},
+    {
+        rule = { instance = "splash" },
         properties = {
             floating = true,
             maximized = false,
             placement = awful.placement.centered,
+        }
+    },
+
+    {
+        rule = { instance = "Devtools" },
+        properties = {
+            maximized = false,
+            floating = true,
+            ontop = true,
         }
     }
 
@@ -80,3 +90,5 @@ return {
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
 }
+
+return rules

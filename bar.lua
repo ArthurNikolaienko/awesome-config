@@ -16,7 +16,7 @@ mycalendar:attach( mytextclock, "tr" )
 
 local memCommand = "bash -c \"free --human | awk 'NR == 2 {printf \\\"%s/%s\\\", \\$3, \\$2}'\""
 local myMemWatch = awful.widget.watch(memCommand, 1, function(widget, stdout)
-    widget.markup = '<b>' .. stdout .. '</b>'
+    widget.markup = '<b> ' .. stdout .. '</b>'
 end)
 
 
