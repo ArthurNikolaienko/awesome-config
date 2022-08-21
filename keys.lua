@@ -154,7 +154,9 @@ local globalkeys = gears.table.join(
     awful.key({modkey}, "p", function() awful.spawn.with_shell("rofi -show power-menu:~/.config/awesome/rofi/power-menu") end,
         {description = "Power menu", group = "media"}),
     awful.key({modkey}, "c", function() awful.spawn.with_shell("rofi -show calc -modi calc") end,
-        {description = "Calculator", group = "media"})
+        {description = "Calculator", group = "media"}),
+    awful.key({modkey}, "b", function() awful.spawn.with_shell("~/.config/awesome/rofi/rofi-bluetooth") end,
+        {description = "Bluetooth", group = "media"})
 
 )
 
