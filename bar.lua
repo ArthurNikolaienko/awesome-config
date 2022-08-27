@@ -232,11 +232,9 @@ function createBar(s)
                 {
                     widget = wibox.widget.background,
                     bg = beautiful.palette.bg_alt,
-                    shape = powerline_right,
+                    shape = gears.shape.rectangle,
                     {
                         widget = wibox.container.margin,
-                        left = 15,
-                        right = 20,
                         s.mytaglist,
                     },
                 },
