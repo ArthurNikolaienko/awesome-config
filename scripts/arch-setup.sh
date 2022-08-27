@@ -96,6 +96,8 @@ echo "Installing packages"
 #install required packages
 sudo pacman -Syu "${deps[@]}" --noconfirm --needed
 
+systemctl --user enable pipewire wireplumber
+
 # link configs
 ln -sf "$awesome_repo/rofi" "$HOME/.config/rofi"
 echo "Linked configs"

@@ -58,8 +58,8 @@ theme.taglist_fg_occupied = palette.yellow
 theme.taglist_fg_urgent = theme.fg_urgent
 
 theme.tasklist_bg_urgent = theme.fg_urgent
-theme.tasklist_bg_normal = palette.fg
-theme.tasklist_bg_focus = palette.yellow
+theme.tasklist_bg_normal = palette.gray
+theme.tasklist_bg_focus = palette.teal
 
 -- There are other variable sets
 -- overriding the default one when

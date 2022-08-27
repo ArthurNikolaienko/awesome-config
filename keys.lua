@@ -2,9 +2,12 @@ local awful = require("awful")
 local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local globals = require('globals')
+local naughty = require("naughty")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+
+naughty.config.defaults.margin = 10
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -19,6 +22,7 @@ local function volume(command)
 
     awful.spawn.easy_async(dir .. "vol.sh " .. command, function(stdout)
         volume_notification = naughty.notify({
+            title = 'Volume control',
             text = "Volume: " .. stdout,
             replaces_id = volume_notification.id,
         })

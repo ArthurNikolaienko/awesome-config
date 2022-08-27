@@ -166,7 +166,7 @@ function createBar(s)
                     layout = wibox.layout.fixed.horizontal,
                 },
                 left = 18,
-                right = 14,
+                right = 10,
                 widget = wibox.container.margin,
             },
             id = "background_role",
@@ -180,32 +180,30 @@ function createBar(s)
         filter = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
         style = {
-            shape = gears.shape.rounded_bar,
+            shape = powerline_right_no_tail,
         },
-        layout = {
-            spacing_widget = {
-                {
-                    forced_width = 1,
-                    forced_height = 24,
-                    thickness = 1,
-                    color = "#4c566aR",
-                    widget = wibox.widget.separator,
-                },
-                valign = "center",
-                halign = "center",
-                widget = wibox.container.place,
-            },
-            spacing = 2,
-            layout = wibox.layout.fixed.horizontal,
-        },
+        --layout = {
+        --    spacing_widget = {
+        --        {
+        --            forced_height = 30,
+        --            color = "#4c566a",
+        --            widget = wibox.widget.separator,
+        --        },
+        --    },
+        --    layout = wibox.layout.fixed.horizontal,
+        --},
         -- Notice that there is *NO* wibox.wibox prefix, it is a template,
         -- not a widget instance.
         widget_template = {
-            widget = wibox.widget.background,
+            widget = wibox.container.background,
+            bg = beautiful.palette.fg,
             id = "background_role",
             {
-                margins = 3,
                 widget = wibox.container.margin,
+                top = 2,
+                bottom = 2,
+                left = 12,
+                right = 12,
                 {
                     id = "clienticon",
                     widget = awful.widget.clienticon,
@@ -214,7 +212,8 @@ function createBar(s)
             nil,
             create_callback = function(self, c, index, objects)
                 --luacheck: no unused args
-                self:get_children_by_id("clienticon")[1].client = c
+                local children = self:get_children_by_id("clienticon")
+                children[1].client = c
             end,
         },
     })
@@ -225,30 +224,30 @@ function createBar(s)
     s.mywibox:setup({
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            spacing = -20,
+            widget = wibox.container.background,
+            bg = beautiful.palette.bg_alt,
+            shape = powerline_right,
             {
-                widget = wibox.widget.background,
-                bg = beautiful.palette.bg_alt,
-                shape = powerline_right,
+                layout = wibox.layout.fixed.horizontal,
                 {
-                    widget = wibox.container.margin,
-                    left = 15,
-                    right = 30,
-                    s.mytaglist,
+                    widget = wibox.widget.background,
+                    bg = beautiful.palette.bg_alt,
+                    shape = powerline_right,
+                    {
+                        widget = wibox.container.margin,
+                        left = 15,
+                        right = 20,
+                        s.mytaglist,
+                    },
                 },
-            },
-            {
-                widget = wibox.widget.background,
-                bg = beautiful.palette.blue,
-                shape = powerline_right_no_tail,
                 {
-                    widget = wibox.container.margin,
-                    left = 15,
-                    right = 15,
-                    top = 2,
-                    bottom = 2,
-                    s.mytasklist,
+                    widget = wibox.widget.background,
+                    bg = beautiful.palette.gray,
+                    shape = powerline_right_no_tail,
+                    {
+                        widget = wibox.container.margin,
+                        s.mytasklist,
+                    },
                 },
             },
         },
