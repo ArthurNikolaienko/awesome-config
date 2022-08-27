@@ -68,7 +68,7 @@ local globalkeys = gears.table.join(
         awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
         awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
         awful.key({ modkey }, "w", function()
-            awful.spawn(browser)
+            awful.spawn(globals.browser)
         end, { description = "Start browser", group = "launcher" }),
 
         awful.key({ modkey }, "e", function()

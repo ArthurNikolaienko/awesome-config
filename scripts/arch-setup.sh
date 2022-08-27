@@ -15,6 +15,7 @@ deps=(
   gnome-themes-extra
   lxqt-policykit
   pcmanfm
+  ffmpegthumbnailer
   gvfs
   xarchiver
   unzip
@@ -23,6 +24,16 @@ deps=(
   atril
   gtk3
   adwaita-qt5
+  cutefish-icons
+  usbutils
+  udisks2
+
+  # Media
+  gpicview
+  gpick
+  inkscape
+  lxmusic
+  vlc
 
   #Editors
   vim
@@ -66,6 +77,7 @@ aur_deps=(
   picom-ibhagwan-git
   webstorm
   nerd-fonts-hack
+  postman-bin
 )
 
 #install required packages
@@ -79,5 +91,14 @@ ln -sf "$awesome_repo/rofi" "$HOME/.config/rofi"
 
 # download AUR packages
 for pkg in "${aur_deps[@]}"; do
-  git clone "https://aur.archlinux.org/$pkg.git" "$HOME/.aur/$pkg"
+  git clone "https://aur.archlinux.org/$pkg.git" "$HOME/aur/$pkg"
 done
+
+
+# download wallpapers
+wp_dir="$HOME/pictures/wallpapers"
+
+if [ ! -d "$wp_dir" ]; then
+  mkdir "$wp_dir"
+  git clone https://gitlab.com/exorcist365/wallpapers.git "$wp_dir"
+fi
