@@ -11,20 +11,26 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-local pallete = {
+local palette = {
     bg = "#282828",
-    
+    bg_light = "#504945",
+    focus = "#928374",
+    fg = "#ebdbb2",
+    red = "#fb4934",
+    yellow = "#fabd2f",
+    aqua = "#8ec07c",
+    green = "#98971a",
 }
 
 theme.font          = "Hack Nerd Font 9"
 
-theme.bg_normal     = "#2e3440"
-theme.bg_focus      = "#5e81ac"
-theme.bg_urgent     = theme.bg_focus
+theme.bg_normal     = palette.bg
+theme.bg_focus      = palette.focus
+theme.bg_urgent     = theme.fg
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = "#434c5e"
 
-theme.fg_normal     = "#d8dee9"
+theme.fg_normal     = palette.fg
 theme.fg_focus      = "#eceff4"
 theme.fg_urgent     = "#bf616a"
 theme.fg_minimize   = "#ffffff"
@@ -35,9 +41,9 @@ theme.border_normal = "#5e81ac"
 theme.border_focus  = "#81a1c1"
 theme.border_marked = "#91231c"
 
-theme.taglist_fg_focus = "#8fbcbb"
-theme.taglist_fg_empty = theme.fg_normal
-theme.taglist_fg_occupied = "#ebcb8b"
+theme.taglist_fg_focus = palette.yellow
+theme.taglist_fg_empty = palette.aqua
+theme.taglist_fg_occupied = palette.yellow
 theme.taglist_fg_urgent = theme.fg_urgent
 
 theme.tasklist_bg_urgent = theme.fg_urgent

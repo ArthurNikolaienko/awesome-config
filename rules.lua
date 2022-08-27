@@ -84,6 +84,14 @@ local rules = {
             floating = true,
             ontop = true,
         }
+    },
+    {
+        rule = { instance = "kitty" },
+        properties = {
+            maximized = false,
+            floating = true,
+            placement = awful.placement.centered,
+        }
     }
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
