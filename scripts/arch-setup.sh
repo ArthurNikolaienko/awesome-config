@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Assume this repo was cloned to ~/.config/awesome/
+awesome_repo="$HOME/.config/awesome"
+
 #Run with sudo
 # [ "$UID" -eq 0 ] || { echo "This script m ust be run as root."; exit 1;}
 
@@ -8,7 +11,7 @@ deps=(
   xorg{,-xinit}
   xsel
   awesome
-  #picom #Regular picom will do, but i recommend using picom-ibhagwan-git from aur
+  picom #Regular picom will do, but i recommend using picom-ibhagwan-git from aur
   nitrogen
   rofi
   lxappearance
@@ -27,6 +30,9 @@ deps=(
   cutefish-icons
   usbutils
   udisks2
+  rclone
+  gdu
+  bleachbit
 
   # Media
   gpicview
@@ -74,17 +80,12 @@ deps=(
 # You need to manually review them and run makepkg -si
 aur_deps=(
   skypeforlinux-stable-bin
-  picom-ibhagwan-git
   webstorm
-  nerd-fonts-hack
   postman-bin
 )
 
 #install required packages
 sudo pacman -Syu "${deps[@]}" --noconfirm --needed
-
-#Assume this repo was cloned to ~/.config/awesome/
-awesome_repo="$HOME/.config/awesome"
 
 # link configs
 ln -sf "$awesome_repo/rofi" "$HOME/.config/rofi"
@@ -102,3 +103,9 @@ if [ ! -d "$wp_dir" ]; then
   mkdir "$wp_dir"
   git clone https://gitlab.com/exorcist365/wallpapers.git "$wp_dir"
 fi
+
+#install bundled fonts
+for dir in $awesome_repo/fonts/; do
+  sudo cp "$dir/usr" "/"
+done
+
