@@ -30,9 +30,16 @@ deps=(
   cutefish-icons
   usbutils
   udisks2
+
+  #Utilities
   rclone
   gdu
   bleachbit
+  btop
+  neofetch
+  openvpn
+  libqalculate
+  xsecurelock
 
   # Media
   gpicview
@@ -46,6 +53,7 @@ deps=(
   neovim
   python-neovim
   code
+  leafpad
 
   #Clipboard manager
   copyq
@@ -105,7 +113,15 @@ if [ ! -d "$wp_dir" ]; then
 fi
 
 #install bundled fonts
-for dir in $awesome_repo/fonts/; do
-  sudo cp "$dir/usr" "/"
+for dir in "$awesome_repo"/fonts/*; do
+  sudo cp "$dir/usr" "/" -r
 done
 
+#Write environment vars. OVERRIDES THE FILE!!!
+echo \
+'QT_STYLE_OVERRIDE=adwaita-dark
+XSECURELOCK_COMPOSITE_OBSCURER=0
+XSECURELOCK_DIM_ALPHA=0.8
+XSECURELOCK_PASSWORD_PROMPT=time_hex
+EDITOR=vim' \
+| sudo tee /etc/environment > /dev/null

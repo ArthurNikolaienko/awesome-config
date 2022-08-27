@@ -140,6 +140,10 @@ local globalkeys = gears.table.join(
             end
         end, { description = "restore minimized", group = "client" }),
 
+        awful.key({ modkey }, "l", function()
+            awful.spawn('xsecurelock')
+        end, { description = "restore minimized", group = "client" }),
+
 -- Volume control
         awful.key({}, "XF86AudioRaiseVolume", function()
             volume("inc")
@@ -167,7 +171,7 @@ local globalkeys = gears.table.join(
             awful.spawn.with_shell("rofi -show power-menu:~/.config/awesome/rofi/power-menu")
         end, { description = "Power menu", group = "media" }),
         awful.key({ modkey }, "c", function()
-            awful.spawn.with_shell("rofi -show calc -modi calc")
+            awful.spawn(globals.terminal .." -e qalc")
         end, { description = "Calculator", group = "media" }),
         awful.key({ modkey }, "b", function()
             awful.spawn.with_shell("~/.config/awesome/rofi/rofi-bluetooth")
