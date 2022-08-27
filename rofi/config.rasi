@@ -1,4 +1,4 @@
-@theme "nord"
+@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
 
 configuration {
   modi: "window,drun,run,combi";
