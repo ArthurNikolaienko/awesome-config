@@ -1,36 +1,28 @@
--- If LuaRocks is installed, make sure that packages installed through it are
--- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
--- Standard awesome library
-gears = require("gears")
-awful = require("awful")
 require("awful.autofocus")
--- Widget and layout library
-wibox = require("wibox")
--- Theme handling library
-beautiful = require("beautiful")
--- Notification library
-naughty = require("naughty")
-menubar = require("menubar")
 
--- Initialize theme
+local gears = require("gears")
+local awful = require("awful")
+local beautiful = require("beautiful")
 beautiful.init(gears.filesystem.get_configuration_dir()  .. "themes/gruvbox.lua")
 
-require('globals')
-keys = require('keys')
-require('titlebar')
+local naughty = require("naughty")
+local keys = require('keys')
 local bar = require('bar')
 local rules = require('rules')
+
+-- Initialize theme
+
 
 -- Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-    naughty.notify({ 
-        preset = naughty.config.presets.critical,            
-        title = "Oops, there were errors during startup!",          
-        text = awesome.startup_errors 
+    naughty.notify({
+        preset = naughty.config.presets.critical,
+        title = "Oops, there were errors during startup!",
+        text = awesome.startup_errors
     })
 end
 
@@ -42,17 +34,15 @@ do
         if in_error then return end
         in_error = true
 
-        naughty.notify({ 
+        naughty.notify({
             preset = naughty.config.presets.critical,
             title = "Oops, an error happened!",
-            text = tostring(err) 
+            text = tostring(err)
         })
 
         in_error = false
     end)
 end
-
-
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {

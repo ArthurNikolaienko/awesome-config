@@ -1,4 +1,12 @@
-terminal = "kitty"
-browser = "firefox"
-editor = os.getenv("EDITOR") or "nano"
-editor_cmd = terminal .. " -e " .. editor
+if globals then
+    return
+end ;
+
+local globals = {};
+
+globals.terminal = "kitty"
+globals.browser = "firefox"
+globals.editor = os.getenv("EDITOR") or "nano"
+globals.editor_cmd = globals.terminal .. " -e " .. globals.editor
+
+return globals
