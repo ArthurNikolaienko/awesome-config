@@ -92,14 +92,17 @@ aur_deps=(
   postman-bin
 )
 
+echo "Installing packages"
 #install required packages
 sudo pacman -Syu "${deps[@]}" --noconfirm --needed
 
 # link configs
 ln -sf "$awesome_repo/rofi" "$HOME/.config/rofi"
+echo "Linked configs"
 
 # download AUR packages
 for pkg in "${aur_deps[@]}"; do
+  echo "Trying to download PKGBUILD for $pkg"
   git clone "https://aur.archlinux.org/$pkg.git" "$HOME/aur/$pkg"
 done
 
@@ -108,6 +111,7 @@ done
 wp_dir="$HOME/pictures/wallpapers"
 
 if [ ! -d "$wp_dir" ]; then
+  echo 'Downloading wallpapers'
   mkdir "$wp_dir"
   git clone https://gitlab.com/exorcist365/wallpapers.git "$wp_dir"
 fi
@@ -118,6 +122,7 @@ for dir in "$awesome_repo"/fonts/*; do
 done
 
 #Write environment vars. OVERRIDES THE FILE!!!
+echo 'Writing environment variables'
 echo \
 'QT_STYLE_OVERRIDE=adwaita-dark
 XSECURELOCK_COMPOSITE_OBSCURER=0
