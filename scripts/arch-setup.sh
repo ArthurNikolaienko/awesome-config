@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #Run with sudo
 # [ "$UID" -eq 0 ] || { echo "This script m ust be run as root."; exit 1;}
@@ -21,6 +21,8 @@ deps=(
   unrar
   p7zip
   atril
+  gtk3
+  adwaita-qt5
 
   #Editors
   vim
@@ -61,7 +63,7 @@ deps=(
 # You need to manually review them and run makepkg -si
 aur_deps=(
   skypeforlinux-stable-bin
-  picom-ibhagwan-git 
+  picom-ibhagwan-git
   webstorm
   nerd-fonts-hack
 )
@@ -76,6 +78,6 @@ awesome_repo="$HOME/.config/awesome"
 ln -sf "$awesome_repo/rofi" "$HOME/.config/rofi"
 
 # download AUR packages
-for pkg in ${aur_deps[@]}; do
+for pkg in "${aur_deps[@]}"; do
   git clone "https://aur.archlinux.org/$pkg.git" "$HOME/.aur/$pkg"
 done
