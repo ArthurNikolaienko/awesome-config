@@ -80,7 +80,7 @@ client.connect_signal("manage", function(c)
 end)
 
 client.connect_signal("property::name", function(c)
-	bar.titleBar.markup = c.name
+	c.screen.titleBar.markup = c.name
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
@@ -90,11 +90,12 @@ end)
 
 client.connect_signal("focus", function(c)
 	c.border_color = beautiful.border_focus
-	bar.titleBar.markup = c.name
+	c.screen.titleBar.markup = c.name
 end)
+
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
-	bar.titleBar.markup = ""
+	c.screen.titleBar.markup = ""
 end)
 
 awful.util.spawn_with_shell("~/.config/awesome/autorun.sh")

@@ -100,15 +100,15 @@ local function powerline_right_no_tail(cr, width, height)
 	gears.shape.transform(gears.shape.powerline)(cr, width, height, 10)
 end
 
-local titleBar = wibox.widget({
-	markup = "Title",
-	align = "center",
-	widget = wibox.widget.textbox,
-})
-
 local function createBar(s)
 	-- Wallpaper
 	set_wallpaper(s)
+
+	s.titleBar = wibox.widget({
+		markup = "Title",
+		align = "center",
+		widget = wibox.widget.textbox,
+	})
 
 	-- Each screen has its own tag table.
 
@@ -266,7 +266,7 @@ local function createBar(s)
 				widget = wibox.container.margin,
 				right = 20,
 				left = 20,
-				titleBar,
+				s.titleBar,
 			},
 		},
 		{ -- Right widgets
@@ -336,5 +336,4 @@ end
 
 return {
 	createBar = createBar,
-	titleBar = titleBar,
 }
