@@ -38,7 +38,8 @@ theme.bg_normal = palette.bg
 theme.bg_focus = palette.fg
 theme.bg_urgent = palette.bg
 theme.bg_minimize = palette.gray
-theme.bg_systray = palette.bg_alt
+
+theme.bg_systray = palette.black
 theme.systray_icon_spacing = dpi(4)
 
 theme.fg_normal = palette.fg
