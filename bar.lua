@@ -24,6 +24,10 @@ local myMemWatch = awful.widget.watch(memCommand, 1, function(widget, stdout)
     widget.markup = " " .. stdout
 end)
 
+local mytempCommand = 'bash -c "cat /sys/class/hwmon/hwmon2/temp1_input | awk \'{printf \\"%0.1f °C\\", $1/1000}\'"'
+
+local myTempWatch = awful.widget.watch(mytempCommand, 1)
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
         awful.button({}, 1, function(t)
@@ -200,10 +204,10 @@ function createBar(s)
             id = "background_role",
             {
                 widget = wibox.container.margin,
-                top = 2,
-                bottom = 2,
-                left = 12,
-                right = 12,
+                top = 3,
+                bottom = 3,
+                left = 15,
+                right = 15,
                 {
                     id = "clienticon",
                     widget = awful.widget.clienticon,
@@ -232,15 +236,16 @@ function createBar(s)
                 {
                     widget = wibox.widget.background,
                     bg = beautiful.palette.bg_alt,
-                    shape = gears.shape.rectangle,
+                    shape = powerline_right_no_tail,
                     {
                         widget = wibox.container.margin,
+                        right = 20,
                         s.mytaglist,
                     },
                 },
                 {
                     widget = wibox.widget.background,
-                    bg = beautiful.palette.gray,
+                    bg = beautiful.palette.blue,
                     shape = powerline_right_no_tail,
                     {
                         widget = wibox.container.margin,
@@ -264,17 +269,6 @@ function createBar(s)
                     mytextclock,
                 },
             },
-            -- {
-            --     widget = wibox.widget.background,
-            --     bg = "#434c5e",
-            --     shape = powerline_left,
-            --     {
-            --         widget = wibox.container.margin,
-            --         left = 20,
-            --         right = 20,
-            --         wibox.widget.systray(),
-            --     },
-            -- },
             {
                 widget = wibox.widget.background,
                 bg = beautiful.palette.orange,
@@ -283,18 +277,43 @@ function createBar(s)
                     widget = wibox.container.margin,
                     left = 15,
                     right = 15,
-                    myMemWatch,
+                    myTempWatch,
                 },
             },
             {
                 widget = wibox.widget.background,
-                bg = beautiful.palette.gray,
+                bg = beautiful.palette.green,
+                shape = powerline_left,
+                {
+                    widget = wibox.container.margin,
+                    left = 15,
+                    right = 15,
+                    myMemWatch,
+                },
+            },
+            
+            {
+                widget = wibox.widget.background,
+                bg = beautiful.palette.teal,
                 shape = powerline_left,
                 {
                     widget = wibox.container.margin,
                     left = 15,
                     right = 10,
                     mykeyboardlayout,
+                },
+            },
+            {
+                widget = wibox.widget.background,
+                bg = beautiful.palette.bg_alt,
+                shape = powerline_left,
+                {
+                    widget = wibox.container.margin,
+                    left = 20,
+                    right = 10,
+                    top = 3,
+                    bottom = 3,
+                    wibox.widget.systray(),
                 },
             },
         },

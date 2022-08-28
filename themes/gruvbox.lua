@@ -38,7 +38,8 @@ theme.bg_normal = palette.bg
 theme.bg_focus = palette.fg
 theme.bg_urgent = palette.bg
 theme.bg_minimize = palette.gray
-theme.bg_systray = palette.bg
+theme.bg_systray = palette.bg_alt
+theme.systray_icon_spacing = dpi(4)
 
 theme.fg_normal = palette.fg
 theme.fg_focus =  palette.black
@@ -58,7 +59,7 @@ theme.taglist_fg_occupied = palette.yellow
 theme.taglist_fg_urgent = theme.fg_urgent
 
 theme.tasklist_bg_urgent = theme.fg_urgent
-theme.tasklist_bg_normal = palette.gray
+theme.tasklist_bg_normal = palette.blue
 theme.tasklist_bg_focus = palette.teal
 
 -- There are other variable sets
@@ -90,7 +91,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_
 -- beautiful.variable in your rc.lua
 --theme.bg_widget = "#cc0000"
 
-theme.wallpaper = "/home/kernelpanic/Pictures/nord-wallpapers/kittyboard.png"
+-- theme.wallpaper = "/home/kernelpanic/Pictures/nord-wallpapers/kittyboard.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"

@@ -94,6 +94,10 @@ local globalkeys = gears.table.join(
         awful.key({ modkey, "Shift" }, "w", function()
             awful.spawn("chromium")
         end, { description = "Start Chromium", group = "launcher" }),
+        
+        awful.key({ modkey, "Control" }, "w", function()
+            awful.spawn("firefox-developer-edition")
+        end, { description = "Start Firefox dev edition", group = "launcher" }),
 
         awful.key({ modkey }, "d", function()
             awful.spawn.with_shell("rofi -show combi")
