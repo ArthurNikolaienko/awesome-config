@@ -32,7 +32,7 @@ local palette = dark;
 
 theme.palette = palette;
 
-theme.font = "Hack Nerd Font 9"
+theme.font = "Monofur Nerd Font 10"
 
 theme.bg_normal = palette.bg
 theme.bg_focus = palette.fg
