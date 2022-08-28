@@ -100,7 +100,13 @@ local function powerline_right_no_tail(cr, width, height)
 	gears.shape.transform(gears.shape.powerline)(cr, width, height, 10)
 end
 
-function createBar(s)
+local titleBar = wibox.widget({
+	markup = "Title",
+	align = "center",
+	widget = wibox.widget.textbox,
+})
+
+local function createBar(s)
 	-- Wallpaper
 	set_wallpaper(s)
 
@@ -138,8 +144,6 @@ function createBar(s)
 		layout = awful.layout.layouts[1],
 	})
 
-	-- Create a promptbox for each screen
-	s.mypromptbox = awful.widget.prompt()
 	-- Create an imagebox widget which will contain an icon indicating which layout we're using.
 	-- We need one layoutbox per screen.
 	s.mylayoutbox = awful.widget.layoutbox(s)
@@ -256,7 +260,15 @@ function createBar(s)
 				},
 			},
 		},
-		nil,
+		{
+			layout = wibox.layout.flex.horizontal,
+			{
+				widget = wibox.container.margin,
+				right = 20,
+				left = 20,
+				titleBar,
+			},
+		},
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			spacing = -10,
@@ -324,4 +336,5 @@ end
 
 return {
 	createBar = createBar,
+	titleBar = titleBar,
 }
