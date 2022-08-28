@@ -14,6 +14,7 @@ deps=(
   picom #Regular picom will do, but i recommend using picom-ibhagwan-git from aur
   nitrogen
   rofi
+  kitty
   lxappearance
   gnome-themes-extra
   lxqt-policykit
@@ -38,8 +39,11 @@ deps=(
   btop
   neofetch
   openvpn
+  openresolv
+  wget
   libqalculate
   xsecurelock
+  playerctl
 
   # Media
   gpicview
