@@ -301,23 +301,23 @@ function createBar(s)
 				{
 					widget = wibox.container.margin,
 					left = 10,
-					right = 10,
+					right = 5,
 					mykeyboardlayout,
 				},
 			},
-			{
-				widget = wibox.widget.background,
-				bg = beautiful.palette.black,
-				shape = powerline_left,
-				{
-					widget = wibox.container.margin,
-					left = 15,
-					right = 5,
-					top = 3,
-					bottom = 3,
-					wibox.widget.systray(),
-				},
-			},
+			-- {
+			-- 	widget = wibox.widget.background,
+			-- 	bg = beautiful.palette.black,
+			-- 	shape = powerline_left,
+			-- 	{
+			-- 		widget = wibox.container.margin,
+			-- 		left = 15,
+			-- 		right = 5,
+			-- 		top = 3,
+			-- 		bottom = 3,
+			-- 		wibox.widget.systray(),
+			-- 	},
+			-- },
 		},
 	})
 end
