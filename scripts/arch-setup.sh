@@ -44,6 +44,7 @@ deps=(
   libqalculate
   xsecurelock
   playerctl
+  lazygit
 
   # Media
   gpicview
