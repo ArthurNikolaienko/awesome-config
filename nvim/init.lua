@@ -170,6 +170,14 @@ local config = {
 			["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
 			["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
 			["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+			["<Leader>b."] = { "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+			["<Leader>b,"] = { "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
+			["<Leader>1"] = { "<cmd>BufferLineGoTo 1<cr>", desc = "Go to buffer 1" },
+			["<Leader>2"] = { "<cmd>BufferLineGoTo 2<cr>", desc = "Go to buffer 2" },
+			["<Leader>3"] = { "<cmd>BufferLineGoTo 3<cr>", desc = "Go to buffer 3" },
+			["<Leader>4"] = { "<cmd>BufferLineGoTo 4<cr>", desc = "Go to buffer 4" },
+			["<Leader>5"] = { "<cmd>BufferLineGoTo 5<cr>", desc = "Go to buffer 5" },
+			["<Leader>6"] = { "<cmd>BufferLineGoTo 6<cr>", desc = "Go to buffer 6" },
 			-- quick save
 			-- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
 		},

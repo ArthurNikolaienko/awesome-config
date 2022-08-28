@@ -101,11 +101,8 @@ local function powerline_right_no_tail(cr, width, height)
 end
 
 local function createBar(s)
-	-- Wallpaper
-	set_wallpaper(s)
-
 	s.titleBar = wibox.widget({
-		markup = "Title",
+		markup = "",
 		align = "center",
 		widget = wibox.widget.textbox,
 	})

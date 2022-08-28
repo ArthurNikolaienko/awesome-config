@@ -52,7 +52,9 @@ awful.layout.layouts = {
 }
 
 -- Add statusbar
-awful.screen.connect_for_each_screen(bar.createBar)
+for s in screen do
+	bar.createBar(s)
+end
 
 -- Mouse bindings
 -- root.buttons(gears.table.join(
