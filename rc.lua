@@ -82,7 +82,9 @@ client.connect_signal("manage", function(c)
 end)
 
 client.connect_signal("property::name", function(c)
-	c.screen.titleBar.markup = c.name
+	if c.name then
+		c.screen.titleBar.markup = c.name
+	end
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
@@ -92,7 +94,9 @@ end)
 
 client.connect_signal("focus", function(c)
 	c.border_color = beautiful.border_focus
-	c.screen.titleBar.markup = c.name
+	if c.name then
+		c.screen.titleBar.markup = c.name
+	end
 end)
 
 client.connect_signal("unfocus", function(c)
