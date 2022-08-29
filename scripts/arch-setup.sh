@@ -123,9 +123,13 @@ if [ ! -d "$wp_dir" ]; then
   git clone https://gitlab.com/exorcist365/wallpapers.git "$wp_dir"
 fi
 
+if [ ! -d "$HOME/.fonts" ]; then
+  mkdir ~/.fonts
+fi
+
 #install bundled fonts
 for dir in "$awesome_repo"/fonts/*; do
-  sudo cp "$dir/usr" "/" -r
+  cp "$dir" "$HOME/.fonts/" -r
 done
 
 #Write environment vars. OVERRIDES THE FILE!!!
