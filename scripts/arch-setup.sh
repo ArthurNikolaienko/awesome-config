@@ -33,6 +33,7 @@ deps=(
   udisks2
 
   #Utilities
+  efibootmgr
   rclone
   gdu
   bleachbit
