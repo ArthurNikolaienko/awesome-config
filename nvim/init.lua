@@ -48,6 +48,8 @@ local config = {
 		},
 		g = {
 			mapleader = " ", -- sets vim.g.mapleader
+			gruvbox_transparent_bg = true,
+			gruvbox_contrast_light = 'hard',
 		},
 	},
 	-- If you need more control, you can use the function()...end notation
@@ -174,6 +176,8 @@ local config = {
 			["<Leader>5"] = { "<cmd>BufferLineGoTo 5<cr>", desc = "Go to buffer 5" },
 			["<Leader>6"] = { "<cmd>BufferLineGoTo 6<cr>", desc = "Go to buffer 6" },
 			["<Leader>fth"] = { "<cmd>set ft=html.handlebars<cr>", desc = "File type handlebars" },
+			["<Leader>al"] = { "<cmd>set background=light<cr>", desc = "Set light theme" },
+			["<Leader>ad"] = { "<cmd>set background=dark<cr>", desc = "Set dark theme" },
 			-- quick save
 			-- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
 		},
@@ -295,6 +299,10 @@ local config = {
 					-- third key is the key to bring up next level and its displayed
 					-- group name in which-key top level menu
 					["b"] = { name = "Buffer" },
+					['f']  = {
+							['t'] = {name = "File Type"}
+					},
+					['a'] = { name = 'Appearance' },
 				},
 			},
 		},
