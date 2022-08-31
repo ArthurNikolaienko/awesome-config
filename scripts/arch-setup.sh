@@ -38,6 +38,7 @@ deps=(
   gdu
   bleachbit
   btop
+  exa
   neofetch
   openvpn
   openresolv

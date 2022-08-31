@@ -12,9 +12,9 @@ configuration {
 /*	terminal: "rofi-sensible-terminal";*/
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
-/*	run-command: "{cmd}";*/
-/*	run-list-command: "";*/
-/*	run-shell-command: "{terminal} -e {cmd}";*/
+run-command: "fish -ic {cmd}";
+run-list-command: "fish -c functions";
+run-shell-command: "kitty -e fish -ic '{cmd} && read'";
 /*	window-command: "wmctrl -i -R {window}";*/
 /*	window-match-fields: "all";*/
 /*	icon-theme: ;*/

@@ -49,7 +49,7 @@ local config = {
 		g = {
 			mapleader = " ", -- sets vim.g.mapleader
 			gruvbox_transparent_bg = true,
-			gruvbox_contrast_light = 'hard',
+			gruvbox_contrast_light = "hard",
 		},
 	},
 	-- If you need more control, you can use the function()...end notation
@@ -222,6 +222,33 @@ local config = {
 			--   end,
 			-- },
 		},
+		["refactoring"] = function(c)
+			require("refactoring").setup({
+				prompt_func_return_type = {
+					go = false,
+					java = false,
+
+					cpp = false,
+					c = false,
+					h = false,
+					hpp = false,
+					cxx = false,
+				},
+				prompt_func_param_type = {
+					go = false,
+					java = false,
+
+					cpp = false,
+					c = false,
+					h = false,
+					hpp = false,
+					cxx = false,
+				},
+				printf_statements = {},
+				print_var_statements = {},
+			})
+		end,
+
 		-- All other entries override the require("<key>").setup({...}) call for default plugins
 		["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
 			-- config variable is the default configuration table for the setup functino call
@@ -299,10 +326,11 @@ local config = {
 					-- third key is the key to bring up next level and its displayed
 					-- group name in which-key top level menu
 					["b"] = { name = "Buffer" },
-					['f']  = {
-							['t'] = {name = "File Type"}
+					["f"] = {
+						["t"] = { name = "File Type" },
 					},
-					['a'] = { name = 'Appearance' },
+					["a"] = { name = "Appearance" },
+					["r"] = { name = "Refactor" },
 				},
 			},
 		},
