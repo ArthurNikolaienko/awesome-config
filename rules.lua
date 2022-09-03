@@ -92,6 +92,16 @@ local rules = {
     {
         rule = { instance = "kitty" },
         properties = {
+            width = 1024,
+            height = 600,
+            maximized = false,
+            floating = true,
+            placement = awful.placement.centered,
+        }
+    },
+    {
+        rule = { class = "KeePassXC" },
+        properties = {
             maximized = false,
             floating = true,
             placement = awful.placement.centered,
